@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="Section4" Database="" Version="10000">
-  <Project Name="FirstProgram" Path="Project1/Project1.project" Active="Yes"/>
+  <Project Name="FirstProgram" Path="Project1/Project1.project" Active="No"/>
+  <Project Name="CompileErrors" Path="CompileErrors/CompileErrors.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug">
       <Environment/>
       <Project Name="FirstProgram" ConfigName="Debug"/>
+      <Project Name="CompileErrors" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release">
       <Environment/>
       <Project Name="FirstProgram" ConfigName="Release"/>
+      <Project Name="CompileErrors" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
