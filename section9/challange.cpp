@@ -50,7 +50,12 @@ int main () {
       case 's':
       case 'S':
       {
-        int smallest {999999};
+        if (numbers.size() == 0) {
+          cout << "Unable to determine the smallest number - list is empty" << endl;
+          cout << "----------------" << endl;
+          break;
+        }
+        int smallest = numbers.at(0);
         for (auto num: numbers) {
           if (num < smallest) {
             smallest = num;
@@ -63,7 +68,12 @@ int main () {
       case 'l':
       case 'L':
       {
-        int largest {-999999};
+         if (numbers.size() == 0) {
+          cout << "Unable to determine the largest number - list is empty" << endl;
+          cout << "----------------" << endl;
+          break;
+        }
+        int largest = numbers.at(0);
         for (auto num: numbers) {
           if (num > largest) {
             largest = num;
