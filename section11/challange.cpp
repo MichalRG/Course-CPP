@@ -4,16 +4,56 @@
 using namespace std;
 
 void display_menu_options();
+void display_lack_of_data_message();
 char set_selection();
-void display_selected(const vector <int>);
+int get_number_to_find();
+void display_selected(const vector <int> &numbers);
 void add_number(vector<int> &numbers);
-void display_mean(const vector <int>);
-void display_smallest(const vector <int>);
-void display_largest(const vector <int>);
+void display_mean(const vector <int> &numbers);
+void display_smallest(const vector <int> &numbers);
+void display_largest(const vector <int> &numbers);
 void manage_selection(char selection, vector<int> &numbers);
+void handle_find(const vector<int> &numbers);
+void find_the_number(const vector<int> &numbers, int num_to_find);
+bool find(const vector<int> &numbers, int num_to_find);
+
+int get_number_to_find() {
+  int num_to_find {};
+  cout << "Enter the number to find: ";
+  cin >> num_to_find;
+  return num_to_find;
+}
+
+void find_the_number(const vector<int> &numbers, int num_to_find) {
+  if (find(numbers, num_to_find)) {
+    cout << num_to_find << " was found" << endl;
+  } else
+    cout << num_to_find << " was not found" << endl;
+}
+
+bool find(const vector<int> &numbers, int num_to_find) {
+  for (auto num: numbers) {
+    if (num == num_to_find) {
+      return true;
+    }
+  }
+  return false;
+}
+
+void handle_find(const vector<int> &numbers) {
+  if (numbers.size() == 0) {
+    display_lack_of_data_message();
+    return;
+  }
+
+  int num_to_find = get_number_to_find();
+
+  find_the_number(numbers, num_to_find);
+  cout << "----------------" << endl;
+}
 
 void display_menu_options() {
-  cout<< "P - Print numbers" << endl << "A - Add numbers" << endl << "M - Display mean of the numbers" << endl << "S - Display the smallest number" << endl << "L - Display the largest number" << endl << "Q - Quit" << endl;
+  cout<< "P - Print numbers" << endl << "A - Add numbers" << endl << "M - Display mean of the numbers" << endl << "S - Display the smallest number" << endl << "L - Display the largest number" << endl << "F - Find number" << endl << "Q - Quit" << endl;
 }
 
 void display_lack_of_data_message() {
@@ -37,7 +77,7 @@ void add_number(vector<int> &numbers) {
   cout << "----------------" << endl;
 }
 
-void display_selected (const vector <int> numbers) {
+void display_selected (const vector <int> &numbers) {
   cout << "Numbers: " << endl;
   for (auto num: numbers) {
     cout << num << " ";
@@ -45,7 +85,7 @@ void display_selected (const vector <int> numbers) {
   cout << "----------------" << endl;
 }
 
-void display_mean(vector<int> numbers) {
+void display_mean(const vector<int> &numbers) {
   if (numbers.size() == 0) {
     display_lack_of_data_message();
   } else {
@@ -58,7 +98,7 @@ void display_mean(vector<int> numbers) {
   cout << "----------------" << endl;
 }
 
-void display_smallest(const vector<int> numbers) {
+void display_smallest(const vector<int> &numbers) {
   if (numbers.size() == 0) {
     display_lack_of_data_message();
     return;
@@ -74,7 +114,7 @@ void display_smallest(const vector<int> numbers) {
   cout << "----------------" << endl;
 }
 
-void display_largest(const vector<int> numbers) {
+void display_largest(const vector<int> &numbers) {
   if (numbers.size() == 0) {
     display_lack_of_data_message();
     return;
@@ -111,6 +151,10 @@ void manage_selection(char selection, vector<int> &numbers) {
       case 'l':
       case 'L':
         display_largest(numbers);
+        break;
+      case 'F':
+      case 'f':
+        handle_find(numbers);
         break;
       default:
         cout << "Wrong selection" << endl;
