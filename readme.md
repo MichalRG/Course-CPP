@@ -6,3 +6,4 @@ SEC7: Arrays + Vectors
 SEC8: Expressions
 SEC9: If statemnets + Loops
 SEC10: strings (C-Strings, C++ Strings)
+SEC11: math operators + functions
